@@ -1,0 +1,5 @@
+steps:
+    - id: 'coverity scan'
+      name: "gcr.io/cloud-builders/gsutil"
+      args: ['cp', 'gs://coverity-latest/coverity-2019-06.tgz', 'coverity.tgz']
+   
