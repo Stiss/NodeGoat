@@ -7,5 +7,5 @@ steps:
       args: ['tar', '-xzf', 'coverity.tgz']
     - id: 'Test coverity'
       name: 'debian'
-      args: ['ls']
+      args: ['./cov-analysis-linux64-2019.06/bin/cov-build','--ident']
    
