@@ -5,7 +5,12 @@ steps:
     - id: 'Unzip Coverity'
       name: 'debian'
       args: ['tar', '-xzf', 'coverity.tgz']
-    - id: 'Test coverity'
+    - id: 'Configure coverity'
       name: 'debian'
-      args: ['./cov-analysis-linux64-2019.06/bin/cov-build','--ident']
-   
+      args: ['./cov-analysis-linux64-2019.06/bin/cov-configure','--javascript']
+    - id: 'Build coverity'
+      name: 'debian'
+      args: ['./cov-analysis-linux64-2019.06/bin/cov-build','--dir coverity-dir','--no-command','--fs-capture-search','.']   
+    - id: 'Analyze coverity'
+      name: 'debian'
+      args: ['./cov-analysis-linux64-2019.06/bin/cov-analyze','--dir coverity-dir','--webapp-security']
