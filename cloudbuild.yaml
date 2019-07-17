@@ -1,5 +1,11 @@
 steps:
-    - id: 'coverity scan'
+    - id: 'copy coverity'
       name: "gcr.io/cloud-builders/gsutil"
       args: ['cp', 'gs://coverity-latest/coverity-2019-06.tgz', 'coverity.tgz']
+    - id: 'Unzip Coverity'
+      name: 'debian'
+      args: ['tar', '-xzf', 'coverity.tgz']
+    - id: 'Test coverity'
+      name: 'debian'
+      args: ['ls']
    
