@@ -13,5 +13,3 @@ steps:
         - '_COV_STREAM=$_COV_STREAM'
         - '_COV_CONFIG=$_COV_CONFIG'
 timeout: 36000s
-options:
-  machineType: 'N1_HIGHCPU_8'
