@@ -3,17 +3,18 @@ steps:
       name: "gcr.io/cloud-builders/gsutil"
       args: ['cp', 'gs://coverity-latest/coverity-2019-06.tgz', 'coverity.tgz']
     - id: 'Unzip Coverity'
-      name: 'debian'
+      name: 'alpine'
       args: ['tar', '-xzf', 'coverity.tgz']
     - id: 'Configure coverity'
-      name: 'debian'
+      name: 'alpine'
       args: ['./cov-analysis-linux64-2019.06/bin/cov-configure','--javascript']
     - id: 'Build coverity'
-      name: 'debian'
+      name: 'alpine'
       args: ['./cov-analysis-linux64-2019.06/bin/cov-build','--dir', 'coverity-dir','--no-command','--fs-capture-search','.']   
     - id: 'Analyze coverity'
-      name: 'debian'
+      name: 'alpine'
       args: ['./cov-analysis-linux64-2019.06/bin/cov-analyze','--dir', 'coverity-dir','--webapp-security']
     - id: 'Commit coverity'
-      name: 'debian'
+      name: 'alpine'
       args: ['./cov-analysis-linux64-2019.06/bin/cov-commit-defects','--dir', 'coverity-dir','--user', '_COV_USR','--password', '_COV_PASS','--stream', 'nodegoat-gcp','--dataport','9090','--host','35.228.43.175']
+timeout: 3600s
