@@ -1,8 +1,10 @@
 steps:
-    - id: 'copy coverity'
+    - id: 'Copy Coverity to build'
       name: "gcr.io/cloud-builders/gsutil"
       args: ['cp', 'gs://coverity-latest/coverity-full/*', '.']
-    - id: 'Unzip Coverity'
+    - id: 'Run Coverity scanning script'
       name: 'debian'
       args: ['bash', './coverity-scanning.sh']
-timeout: 3600s
+timeout: 36000s
+options:
+  machineType: 'N1_HIGHCPU_8'
